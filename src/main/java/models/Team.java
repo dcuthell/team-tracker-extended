@@ -14,6 +14,6 @@ public class Team {
     }
 
     public String getDescription(){
-        return null;
+        return description;
     }
 }
