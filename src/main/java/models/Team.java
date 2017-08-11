@@ -27,6 +27,6 @@ public class Team {
 
     public void addMember(String memberName){
         String newMember = memberName;
-//        members.add(newMember);
+        members.add(newMember);
     }
 }
