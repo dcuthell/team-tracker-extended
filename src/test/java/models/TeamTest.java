@@ -17,8 +17,12 @@ public class TeamTest {
 
     @Test
     public void getName_returnsStringWhenCalled_String() throws Exception {
-        Team testTeam = new Team();
+        Team testTeam = createTestTeam();
         assertTrue(testTeam.getName() instanceof String);
+    }
+
+    public Team createTestTeam(){
+        return new Team("Test1");
     }
 
 
