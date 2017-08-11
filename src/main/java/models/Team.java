@@ -42,6 +42,11 @@ public class Team {
         return allTeams;
     }
 
+    public static Team findTeamById(Integer index){
+        return null;
+// return allTeams.get(index);
+    }
+
     public static void clearAllTeams(){
         allTeams.clear();
     }
