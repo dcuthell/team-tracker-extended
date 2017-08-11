@@ -1,16 +1,38 @@
 {{#partial "content"}}
 
-    <h1>Team Added!</h1>
+    {{#if newName}}
+        <h1>Name updated!</h1>
+        <p>Team Name: {{ newName.name }}</p>
+        <p>Team Description: {{ newName.description }}</p>
+        <p>Team Members:</p>
+        <ul>
+            {{#each newName.members}}
+                <li>{{ this }}</li>
+            {{/each}}
+        </ul>
+    {{else if addMember}}
+        <h1>Member Added!</h1>
+        <p>Team Name: {{ addMember.name }}</p>
+        <p>Team Description: {{ addMember.description }}</p>
+        <p>Team Members:</p>
+        <ul>
+            {{#each addMember.members}}
+                <li>{{ this }}</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <h1>Team Added!</h1>
 
-    <h2>Team Details:</h2>
-    <p>Team Name: {{ team.name }}</p>
-    <p>Team Description: {{ team.description }}</p>
-    <p>Team Members:</p>
-    <ul>
-        {{#each team.members}}
-            <li>{{ this }}</li>
-        {{/each}}
-    </ul>
+        <h2>Team Details:</h2>
+        <p>Team Name: {{ team.name }}</p>
+        <p>Team Description: {{ team.description }}</p>
+        <p>Team Members:</p>
+        <ul>
+            {{#each team.members}}
+                <li>{{ this }}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
 
 {{/partial}}
 

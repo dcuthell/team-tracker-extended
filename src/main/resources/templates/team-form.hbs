@@ -6,7 +6,15 @@
         <form action="/teams/{{editTeam.id}}/update-name" method="post">
             <label for="name">Team Name</label>
             <input id="name" name="name" type="text">
-            <button type="submit" class="btn btn-default">Create a New Team</button>
+            <button type="submit" class="btn btn-default">Update Name</button>
+        </form>
+    {{else if addMember}}
+        <h3>Add a Team Member</h3>
+
+        <form action="/teams/{{addMember.id}}/add-member" method="post">
+            <label for="member">Member Name</label>
+            <input id="member" name="member" type="text">
+            <button type="submit" class="btn btn-default">Add Member</button>
         </form>
     {{else}}
         <h1>Add a new Team!</h1>

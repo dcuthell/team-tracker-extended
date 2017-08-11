@@ -56,24 +56,40 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a post
-        get("/posts/:id/update-name", (req, res) -> {
+        get("/teams/:id/update-name", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int teamId = Integer.parseInt(req.params("id"));
-            Team foundTeam = Team.findTeamById(teamId);
-            model.put("editTeam", foundTeam);
+            Team editTeam = Team.findTeamById(teamId);
+            model.put("editTeam", editTeam);
+            return new ModelAndView(model, "team-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/teams/:id/add-member", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int teamId = Integer.parseInt(req.params("id"));
+            Team editTeam = Team.findTeamById(teamId);
+            model.put("addMember", editTeam);
             return new ModelAndView(model, "team-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //post: process a form to update a post
-        post("/posts/:id/update-name", (request, response) -> {
+        post("/teams/:id/update-name", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            ArrayList<Team> teams = Team.getAllTeams();
+            int teamId = Integer.parseInt(request.params("id"));
+            Team editTeam = Team.findTeamById(teamId);
             String name = request.queryParams("name");
-            String description = request.queryParams("description");
-            String leader = request.queryParams("leader");
-            Team newTeam = new Team(name, description);
-            newTeam.addMember(leader);
-            model.put("team", newTeam);
+            editTeam.setName(name);
+            model.put("newName", editTeam);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/teams/:id/add-member", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int teamId = Integer.parseInt(request.params("id"));
+            Team editTeam = Team.findTeamById(teamId);
+            String member = request.queryParams("member");
+            editTeam.addMember(member);
+            model.put("addMember", editTeam);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
         //get: delete an individual post
