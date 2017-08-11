@@ -24,4 +24,9 @@ public class Team {
     public ArrayList<String> getMembers(){
         return members;
     }
+
+    public void addMember(String memberName){
+        String newMember = memberName;
+//        members.add(newMember);
+    }
 }

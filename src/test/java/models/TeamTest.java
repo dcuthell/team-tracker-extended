@@ -35,6 +35,13 @@ public class TeamTest {
         assertTrue(testTeam.getMembers() instanceof ArrayList);
     }
 
+    @Test
+    public void addMember_addsStringtoArrayMakingItSizeOf1_1() throws Exception {
+        Team testTeam = createTestTeam();
+        testTeam.addMember("Mike Jones");
+        assertEquals(1, testTeam.getMembers().size());
+    }
+
     public Team createTestTeam(){
         return new Team("TestTeam1", "TestDesc1");
     }
