@@ -56,6 +56,13 @@ public class TeamTest {
         assertEquals(2, Team.getAllTeams().size());
     }
 
+    @Test
+    public void getId_firstInstanceHasIdOf1_1() throws Exception {
+        Team testTeam = createTestTeam();
+        Integer testId = 1;
+        assertEquals(testId, testTeam.getId());
+    }
+
     public Team createTestTeam(){
         return new Team("TestTeam1", "TestDesc1");
     }

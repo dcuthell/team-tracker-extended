@@ -6,6 +6,7 @@ public class Team {
     private String name;
     private String description;
     private ArrayList<String> members;
+    private Integer id;
     private static ArrayList<Team> allTeams = new ArrayList<>();
 
     public Team(String name, String description){
@@ -13,6 +14,7 @@ public class Team {
         this.description = description;
         this.members = new ArrayList<>();
         allTeams.add(this);
+        this.id = allTeams.size();
     }
 
     public String getName(){
@@ -30,6 +32,10 @@ public class Team {
     public void addMember(String memberName){
         String newMember = memberName;
         members.add(newMember);
+    }
+
+    public Integer getId(){
+        return null;
     }
 
     public static ArrayList<Team> getAllTeams(){
