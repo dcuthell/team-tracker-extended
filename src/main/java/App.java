@@ -20,7 +20,7 @@ public class App {
             return new ModelAndView(model, "team-form.hbs");
         }, new HandlebarsTemplateEngine());
         //post: process new post form
-        post("/teams", (request, response) -> {
+        post("/teams/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             ArrayList<Team> teams = Team.getAllTeams();
             String name = request.queryParams("name");
@@ -47,11 +47,35 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: show an individual post
+        get("/teams/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int teamId = Integer.parseInt(req.params("id"));
+            Team foundTeam = Team.findTeamById(teamId);
+            model.put("team", foundTeam);
+            return new ModelAndView(model, "team-details.hbs"); //individual post page.
+        }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a post
+        get("/posts/:id/update-name", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int teamId = Integer.parseInt(req.params("id"));
+            Team foundTeam = Team.findTeamById(teamId);
+            model.put("editTeam", foundTeam);
+            return new ModelAndView(model, "team-form.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //post: process a form to update a post
-
+        post("/posts/:id/update-name", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            ArrayList<Team> teams = Team.getAllTeams();
+            String name = request.queryParams("name");
+            String description = request.queryParams("description");
+            String leader = request.queryParams("leader");
+            Team newTeam = new Team(name, description);
+            newTeam.addMember(leader);
+            model.put("team", newTeam);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
         //get: delete an individual post
 
         //get: delete all posts

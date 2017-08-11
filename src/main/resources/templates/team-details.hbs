@@ -1,15 +1,26 @@
 {{#partial "content"}}
-
-    <h1>Current Teams:</h1>
-
     {{#if teams}}
+        <h1>Current Teams:</h1>
         {{#each teams }}
-            <p>{{ name }}</p>
+            <p>{{ name }} <a href="/teams/{{id}}/update-name">edit name</a></p>
             <p>{{ description }}</p>
-            {{#each members}}
-                <p>{{this }}</p>
-            {{/each}}
+            <p>Members:</p>
+            <ul>
+                {{#each members}}
+                    <li>{{this }}</li>
+                {{/each}}
+            </ul>
+            <p>---------------------------</p>
         {{/each}}
+    {{else if team}}
+        <h2>Team Details for: {{ team.name }} <a href="/teams/{{id}}/update-name">edit name</a></h2>
+        <p>Description: {{ team.description }}</p>
+        <p>Members:</p>
+        <ul>
+            {{#each team.members}}
+                <li>{{ this }}</li>
+            {{/each}}
+        </ul>
     {{else}}
         <p>No Teams to Show!</p>
     {{/if}}

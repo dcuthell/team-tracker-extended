@@ -38,6 +38,10 @@ public class Team {
         return id;
     }
 
+    public void setName(String name){
+        this.name = "";
+    }
+
     public static ArrayList<Team> getAllTeams(){
         return allTeams;
     }
