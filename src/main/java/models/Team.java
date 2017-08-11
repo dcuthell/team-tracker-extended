@@ -6,11 +6,13 @@ public class Team {
     private String name;
     private String description;
     private ArrayList<String> members;
+    private static ArrayList<Team> allTeams;
 
     public Team(String name, String description){
         this.name = name;
         this.description = description;
         this.members = new ArrayList<>();
+//        allTeams.add(this);
     }
 
     public String getName(){
@@ -28,5 +30,9 @@ public class Team {
     public void addMember(String memberName){
         String newMember = memberName;
         members.add(newMember);
+    }
+
+    public static ArrayList<Team> getAllTeams(){
+        return allTeams;
     }
 }
