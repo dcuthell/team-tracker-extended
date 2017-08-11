@@ -39,7 +39,7 @@ public class Team {
     }
 
     public void setName(String name){
-        this.name = "";
+        this.name = name;
     }
 
     public static ArrayList<Team> getAllTeams(){
