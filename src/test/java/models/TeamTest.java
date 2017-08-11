@@ -21,8 +21,14 @@ public class TeamTest {
         assertTrue(testTeam.getName() instanceof String);
     }
 
+    @Test
+    public void getDescription_returnsStringWhenCalled_String() throws Exception {
+        Team testTeam = createTestTeam();
+        assertTrue(testTeam.getDescription() instanceof String);
+    }
+
     public Team createTestTeam(){
-        return new Team("Test1");
+        return new Team("TestTeam1", "TestDesc1");
     }
 
 
