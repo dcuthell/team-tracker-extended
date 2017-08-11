@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class TeamTest {
@@ -25,6 +27,12 @@ public class TeamTest {
     public void getDescription_returnsStringWhenCalled_String() throws Exception {
         Team testTeam = createTestTeam();
         assertTrue(testTeam.getDescription() instanceof String);
+    }
+
+    @Test
+    public void getMembers_returnsArrayListWhenCalled_ArrayList() throws Exception {
+        Team testTeam = createTestTeam();
+        assertTrue(testTeam.getMembers() instanceof ArrayList);
     }
 
     public Team createTestTeam(){
