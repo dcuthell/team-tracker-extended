@@ -49,6 +49,13 @@ public class TeamTest {
         assertEquals(1, Team.getAllTeams().size());
     }
 
+    @Test
+    public void getAllTeams_addsTwoTeamInstancesToStaticArray_2() throws Exception {
+        Team testTeam = createTestTeam();
+        Team testTeam2 = new Team("Test2", "TestDesc2");
+        assertEquals(1, Team.getAllTeams().size());
+    }
+
     public Team createTestTeam(){
         return new Team("TestTeam1", "TestDesc1");
     }
