@@ -53,7 +53,7 @@ public class TeamTest {
     public void getAllTeams_addsTwoTeamInstancesToStaticArray_2() throws Exception {
         Team testTeam = createTestTeam();
         Team testTeam2 = new Team("Test2", "TestDesc2");
-        assertEquals(1, Team.getAllTeams().size());
+        assertEquals(2, Team.getAllTeams().size());
     }
 
     public Team createTestTeam(){
