@@ -72,10 +72,10 @@ public class TeamTest {
     }
 
     @Test
-    public void findTeambyId_returnsCorrectTeamInstance() throws Exception {
+    public void findTeamById_returnsCorrectTeamInstance() throws Exception {
         Team testTeam = createTestTeam();
         Team testTeam2 = new Team("Two", "two");
-        assertEquals(testTeam2.getName(), Team.findTeamById(2).getName());
+        assertEquals(testTeam2.getName(), Team.findTeamById(testTeam2.getId()).getName());
     }
 
 
