@@ -35,7 +35,7 @@ public class Team {
     }
 
     public Integer getId(){
-        return null;
+        return id;
     }
 
     public static ArrayList<Team> getAllTeams(){
