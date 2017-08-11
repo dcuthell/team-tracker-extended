@@ -4,7 +4,11 @@
 
     {{#if teams}}
         {{#each teams }}
-            <p>{{ name }} <a href="/teams/{{id}}">See details, add a team member...</a></p>
+            <p>{{ name }}</p>
+            <p>{{ description }}</p>
+            {{#each members}}
+                <p>{{this }}</p>
+            {{/each}}
         {{/each}}
     {{else}}
         <p>No Teams to Show!</p>

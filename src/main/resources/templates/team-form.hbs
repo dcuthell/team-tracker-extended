@@ -1,0 +1,20 @@
+{{#partial "content"}}
+
+    <h1>Add a new Team!</h1>
+
+    <h2>Please enter a team name, description, and name of team leader</h2>
+    <h3>More team members can be added later</h3>
+
+    <form action="/teams" method="post">
+        <label for="name">Team Name</label>
+        <input id="name" name="name" type="text">
+        <label for="description">Team Description</label>
+        <input id="description" name="description" type="text">
+        <label for="leader">Team Leader Name</label>
+        <input id="leader" name="leader" type="text">
+
+        <button type="submit" class="btn btn-default">Create a New Team</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}
