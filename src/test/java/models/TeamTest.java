@@ -63,6 +63,14 @@ public class TeamTest {
         assertEquals(testId, testTeam.getId());
     }
 
+    @Test
+    public void getId_secondInstanceHasIdOf2_2() throws Exception {
+        Team testTeam = createTestTeam();
+        Team testTeam2 = new Team("Two", "two");
+        Integer testId = 2;
+        assertEquals(testId, testTeam2.getId());
+    }
+
     public Team createTestTeam(){
         return new Team("TestTeam1", "TestDesc1");
     }
