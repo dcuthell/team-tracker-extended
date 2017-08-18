@@ -10,8 +10,8 @@
                     <li>{{this }}</li>
                 {{/each}}
             </ul>
-            <p><a href="teams/{{id}}/update-name">Edit Name</a></p>
-            <p><a href="teams/{{id}}/add-member">Add Member</a></p>
+            <p><a href="/teams/{{id}}/update-name">Edit Name</a></p>
+            <p><a href="/teams/{{id}}/add-member">Add Member</a></p>
             <p>---------------------------</p>
         {{/each}}
     {{else if team}}
@@ -20,11 +20,11 @@
         <p>Members:</p>
         <ul>
             {{#each team.members}}
-                <li>{{ this }}</li>
+                <li>{{ first }} {{ last }}</li>
             {{/each}}
         </ul>
         <p><a href="/teams/{{team.id}}/update-name">Edit Name</a></p>
-        <p><a href="teams/{{id}}/add-member">Add Member</a></p>
+        <p><a href="/teams/{{team.id}}/add-member">Add Member</a></p>
     {{else}}
         <p>No Teams to Show!</p>
     {{/if}}

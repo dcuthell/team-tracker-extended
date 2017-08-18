@@ -20,19 +20,26 @@
                 <li>{{ first }} {{last}}</li>
             {{/each}}
         </ul>
-    {{else}}
+    {{else if team}}
         <h1>Team Added!</h1>
 
         <h2>Team Details:</h2>
         <p>Team Name: {{ team.name }}</p>
-        <p>Team Description: {{ team.description }}</p>
-        <p>Team Description: {{ team.id }}</p>
-        <p>Team Members:</p>
-        <ul>
-            {{#each team.members}}
-                <li>{{ this }}</li>
-            {{/each}}
-        </ul>
+        {{# if team.description}}
+            <p>Team Description: {{ team.description }}</p>
+        {{/if}}
+        {{#if team.members}}
+            <p>Team Members:</p>
+            <ul>
+                {{#each team.members}}
+                    <li>{{ first }}  {{last}}</li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <p>No members yet</p>
+        {{/if}}
+    {{else}}
+        <h1>Success!</h1>
     {{/if}}
 
 {{/partial}}
