@@ -13,16 +13,14 @@ import static org.junit.Assert.assertNotEquals;
 
 public class Sql2oMemberDaoTest {
 
-    private Sql2oMemberDao memberDao; //ignore me for now. We'll create this soon.
-    private Connection conn; //must be sql2o class conn
+    private Sql2oMemberDao memberDao;
+    private Connection conn;
 
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
-        memberDao = new Sql2oMemberDao(sql2o); //ignore me for now
-
-        //keep connection open through entire test so it does not get erased.
+        memberDao = new Sql2oMemberDao(sql2o);
         conn = sql2o.open();
     }
 
@@ -36,15 +34,15 @@ public class Sql2oMemberDaoTest {
         Member member = createTestMember();
         Integer originalMemberId = member.getId();
         memberDao.add(member);
-        assertNotEquals(originalMemberId, member.getId()); //how does this work?
+        assertNotEquals(originalMemberId, member.getId());
     }
 
     @Test
     public void findById_existingMembersCanBeFound() throws Exception {
         Member member = createTestMember();
-        memberDao.add(member); //add to dao (takes care of saving)
-        Member foundMember = memberDao.findById(member.getId()); //retrieve
-        assertEquals(member, foundMember); //should be the same
+        memberDao.add(member);
+        Member foundMember = memberDao.findById(member.getId());
+        assertEquals(member, foundMember);
     }
 
     @Test
@@ -57,6 +55,14 @@ public class Sql2oMemberDaoTest {
     @Test
     public void getAll_noMembersReturnsEmptyList() throws Exception {
         assertEquals(0, memberDao.getAll().size());
+    }
+
+    @Test
+    public void update_updateWorks() throws Exception {
+        Member member = createTestMember();
+        memberDao.add(member);
+        memberDao.update(1, "Mike", "Jones");
+        assertNotEquals("John", memberDao.findById(member.getId()).getFirst());
     }
 
     public Member createTestMember(){

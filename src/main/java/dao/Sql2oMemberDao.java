@@ -41,10 +41,26 @@ public class Sql2oMemberDao implements MemberDao{
     @Override
     public Member findById(Integer id) {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM members WHERE id = :id")
+            return con.createQuery("SELECT * FROM members WHERE id=:id")
                     .addParameter("id", id) //key/value pair, key must match above
                     .executeAndFetchFirst(Member.class); //fetch an individual item
         }
     }
+
+    @Override
+    public void update(int id, String newFirst, String newLast){
+        String sql = "UPDATE members SET (first, last) = (:first, :last) WHERE id=:id";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("first", "Mike")
+                    .addParameter("last", newLast)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+
 
 }
