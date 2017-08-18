@@ -4,8 +4,9 @@ import models.Member;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
 
-import java.sql.Connection;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -31,18 +32,35 @@ public class Sql2oMemberDaoTest {
     }
 
     @Test
-    public void addingMemberSetsId() throws Exception {
-        Member member = new Member("John", "Smith", 0);
-        int originalMemberId = member.getId();
+    public void add_addingMemberSetsId() throws Exception {
+        Member member = createTestMember();
+        Integer originalMemberId = member.getId();
         memberDao.add(member);
         assertNotEquals(originalMemberId, member.getId()); //how does this work?
     }
 
     @Test
-    public void existingMembersCanBeFoundById() throws Exception {
-        Member member = new Member ("mow the lawn");
+    public void findById_existingMembersCanBeFound() throws Exception {
+        Member member = createTestMember();
         memberDao.add(member); //add to dao (takes care of saving)
         Member foundMember = memberDao.findById(member.getId()); //retrieve
         assertEquals(member, foundMember); //should be the same
     }
+
+    @Test
+    public void getAll_addedMembersAreReturned() throws Exception {
+        Member member = createTestMember();
+        memberDao.add(member);
+        assertEquals(1, memberDao.getAll().size());
+    }
+
+    @Test
+    public void getAll_noMembersReturnsEmptyList() throws Exception {
+        assertEquals(0, memberDao.getAll().size());
+    }
+
+    public Member createTestMember(){
+        return new Member("John", "Smith", 0);
+    }
+
 }

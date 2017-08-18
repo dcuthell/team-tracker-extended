@@ -11,13 +11,13 @@ public interface MemberDao {
 
     //read
     List<Member> getAll();
-    Member findById(int id);
-
-    //update
-    void update(int id, String first, String last);
-
-    //delete
-    void deleteMemberById();
-    void clearAllMembers();
+    Member findById(Integer id);
+//
+//    //update
+//    void update(int id, String first, String last);
+//
+//    //delete
+//    void deleteMemberById();
+//    void clearAllMembers();
 
 }
