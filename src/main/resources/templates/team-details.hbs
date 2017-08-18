@@ -1,5 +1,18 @@
 {{#partial "content"}}
-    {{#if teams}}
+    {{#if team}}
+        <h2>Team Details for: {{ team.name }}</h2>
+        <p>Description: {{ team.description }}</p>
+        {{#if team.members}}
+            <p>Members:</p>
+            <ul>
+                {{#each team.members}}
+                    <li>{{ first }} {{ last }}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
+        <p><a href="/teams/{{team.id}}/update-name">Edit Name</a></p>
+        <p><a href="/teams/{{team.id}}/add-member">Add Member</a></p>
+    {{else if teams}}
         <h1>Current Teams:</h1>
         {{#each teams }}
             <h3>{{ name }}</h3>
@@ -14,17 +27,6 @@
             <p><a href="/teams/{{id}}/add-member">Add Member</a></p>
             <p>---------------------------</p>
         {{/each}}
-    {{else if team}}
-        <h2>Team Details for: {{ team.name }}</h2>
-        <p>Description: {{ team.description }}</p>
-        <p>Members:</p>
-        <ul>
-            {{#each team.members}}
-                <li>{{ first }} {{ last }}</li>
-            {{/each}}
-        </ul>
-        <p><a href="/teams/{{team.id}}/update-name">Edit Name</a></p>
-        <p><a href="/teams/{{team.id}}/add-member">Add Member</a></p>
     {{else}}
         <p>No Teams to Show!</p>
     {{/if}}

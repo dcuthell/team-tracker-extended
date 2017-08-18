@@ -7,19 +7,23 @@
         <p>Team Members:</p>
         <ul>
             {{#each newName.members}}
-                <li>{{ this }}</li>
+                <li>{{ first }} {{last}}</li>
             {{/each}}
         </ul>
+        <p><a href="/teams/{{newName.id}}/update-name">Edit Name</a></p>
+        <p><a href="/teams/{{newName.id}}/add-member">Add Member</a></p>
     {{else if addMember}}
         <h1>Member Added!</h1>
         <p>Team Name: {{ addMember.name }}</p>
         <p>Team Description: {{ addMember.description }}</p>
         <p>Team Members:</p>
         <ul>
-            {{#each members}}
+            {{#each addMember.members}}
                 <li>{{ first }} {{last}}</li>
             {{/each}}
         </ul>
+        <p><a href="/teams/{{addMember.id}}/update-name">Edit Name</a></p>
+        <p><a href="/teams/{{addMember.id}}/add-member">Add Member</a></p>
     {{else if team}}
         <h1>Team Added!</h1>
 
