@@ -73,6 +73,7 @@ public class Sql2oMemberDao implements MemberDao{
         }
     }
 
+
     @Override
     public void clearAllMembers() {
         String sql = "DELETE from members";

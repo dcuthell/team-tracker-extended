@@ -41,12 +41,13 @@ public class Sql2oTeamDao implements TeamDao {
     public List<Member> getAllMembersByTeam(int id) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM members WHERE teamId=:id") //raw sql
+                    .addParameter("id", id) //key/value pair, key must match above
                     .executeAndFetch(Member.class); //fetch a list
         }
     }
 
     @Override
-    public Team findById(Integer id) {
+    public Team findById(int id) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM teams WHERE id=:id")
                     .addParameter("id", id) //key/value pair, key must match above
@@ -69,7 +70,7 @@ public class Sql2oTeamDao implements TeamDao {
     }
     @Override
     public void deleteTeamById(int id) {
-        String sql = "DELETE from teams WHERE id=:id";
+        String sql = "DELETE from teams WHERE id= :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -81,7 +82,7 @@ public class Sql2oTeamDao implements TeamDao {
 
     @Override
     public void deleteAllMembersByTeam(int id) {
-        String sql = "DELETE from members WHERE teamId=:id";
+        String sql = "DELETE from members WHERE teamId= :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)

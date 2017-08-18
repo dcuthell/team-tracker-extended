@@ -13,13 +13,16 @@ import static org.junit.Assert.*;
 public class Sql2oTeamDaoTest {
 
     private Sql2oTeamDao teamDao;
+    private Sql2oMemberDao memberDao;
     private Connection conn;
 
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
+        Sql2o sql2o2 = new Sql2o(connectionString, "", "");
         teamDao = new Sql2oTeamDao(sql2o);
+        memberDao = new Sql2oMemberDao(sql2o2);
         conn = sql2o.open();
     }
 
@@ -58,6 +61,15 @@ public class Sql2oTeamDaoTest {
     }
 
     @Test
+    public void getAllMembersByTeam_returnsAllTeamMembersInTeam() throws Exception {
+        Member member1 = new Member("John", "Smith", 1);
+        memberDao.add(member1);
+        Member member2 = new Member("Mike", "Jones", 1);
+        memberDao.add(member2);
+        assertEquals(2, teamDao.getAllMembersByTeam(member1.getTeamId()).size());
+    }
+
+    @Test
     public void update_updateWorks() throws Exception {
         Team team = createTestTeam();
         teamDao.add(team);
@@ -73,6 +85,18 @@ public class Sql2oTeamDaoTest {
         teamDao.add(team2);
         teamDao.deleteTeamById(team2.getId());
         assertEquals(1, teamDao.getAll().size());
+    }
+
+    @Test
+    public void deleteAllMembersByTeam_clearsAllMembersFromTeam() throws Exception {
+        Member member1 = new Member("John", "Smith", 1);
+        memberDao.add(member1);
+        Member member2 = new Member("Mike", "Jones", 1);
+        memberDao.add(member2);
+        Member member3 = new Member("Nazem", "Kadri", 2);
+        memberDao.add(member3);
+        teamDao.deleteAllMembersByTeam(1);
+        assertEquals(0, teamDao.getAllMembersByTeam(1).size());
     }
 
     @Test
