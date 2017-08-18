@@ -1,12 +1,12 @@
 # _Team-Tracker_
 
-#### _The Team-Tracker site will allow a manger to create teams, add team members, and edit the team name, 08/11/17_
+#### _The Team-Tracker site will allow a manger to mangage hackathon teams and their members 08/18/17_
 
 #### By _**David Cuthell**_
 
 ## Description
 
-_The Team-Tracker Site allows a manager to manage hackathon teams. The manager will be able to create teams, include descriptions of the team, add members to the team, edit the team name, and browse a list of all created teams, with and without team details._
+_The Team-Tracker Site allows a manager to manage hackathon teams. The manager will be able to create teams, edit them, and delete them individually or all at once. The manager will have the same control over the creation and modification of the members of each team_
 
 ## Setup/Installation Requirements
 
@@ -25,6 +25,9 @@ _The Team-Tracker Site allows a manager to manage hackathon teams. The manager w
 * It can add members to a team
   * __Example Input:__ New Member: Bob
   * __Example Output:__ Bob is now a team member
+* It change the name of an existing member
+  * __Example Input:__ Name: New Name
+  * __Example Output:__ Member name is now New Name
 
 ## Known Bugs
 
