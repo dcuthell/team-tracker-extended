@@ -1,12 +1,12 @@
-# _Team-Tracker_
+# _Team-Tracker Enhanced_
 
-#### _The Team-Tracker site will allow a manger to mangage hackathon teams and their members 08/18/17_
+#### _The Team-Tracker Enhanced site will allow a manger to manage hackathon teams and their members across sessions. 08/18/17_
 
 #### By _**David Cuthell**_
 
 ## Description
 
-_The Team-Tracker Site allows a manager to manage hackathon teams. The manager will be able to create teams, edit them, and delete them individually or all at once. The manager will have the same control over the creation and modification of the members of each team_
+_The Team-Tracker Enhanced Site allows a manager to manage hackathon teams. The manager will be able to create teams, edit them, and delete them individually or all at once. The manager will have the same control over the creation and modification of the members of each team_
 
 ## Setup/Installation Requirements
 
