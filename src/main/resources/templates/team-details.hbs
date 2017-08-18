@@ -6,12 +6,16 @@
             <p>Members:</p>
             <ul>
                 {{#each team.members}}
-                    <li>{{ first }} {{ last }}</li>
+                    <li>{{ first }} {{ last }}
+                        <a href="/members/{{id}}/update-member"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="/members/{{id}}/remove-member"><span class="glyphicon glyphicon-remove"></span></a>
+                    </li>
                 {{/each}}
             </ul>
         {{/if}}
         <p><a href="/teams/{{team.id}}/update-name">Edit Name</a></p>
         <p><a href="/teams/{{team.id}}/add-member">Add Member</a></p>
+        <p><a href="/teams/{{team.id}}/remove-members">Remove All Members From Team</a></p>
     {{else if teams}}
         <h1>Current Teams:</h1>
         {{#each teams }}
@@ -20,11 +24,12 @@
             <p>Members:</p>
             <ul>
                 {{#each members}}
-                    <li>{{this }}</li>
+                    <li>{{ first }} {{ last }} <a href="/members/{{id}}/remove-member"><span class="glyphicon glyphicon-remove"></span></a></li>
                 {{/each}}
             </ul>
             <p><a href="/teams/{{id}}/update-name">Edit Name</a></p>
             <p><a href="/teams/{{id}}/add-member">Add Member</a></p>
+            <p><a href="/teams/{{team.id}}/remove-members">Remove All Members From Team</a></p>
             <p>---------------------------</p>
         {{/each}}
     {{else}}

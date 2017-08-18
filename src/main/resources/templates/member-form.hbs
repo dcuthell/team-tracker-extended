@@ -1,0 +1,34 @@
+{{#partial "content"}}
+    {{#if member}}
+        <h3>Edit a Team Member</h3>
+
+        <form action="/members/{{member.id}}/update-member" method="post">
+            <label for="first">Member First Name</label>
+            <input id="first" name="first" value='{{member.first}}' type="text">
+            <label for="last">Member Last Name</label>
+            <input id="last" name="last" value='{{member.last}}' type="text">
+            <label for="teamId">Update this member's team:</label>
+            <select id="teamId" name="teamId">
+                {{#each teams}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+
+            <button type="submit" class="btn btn-default">Update Member</button>
+        </form>
+    {{else}}
+        <h3>Add a Team Member</h3>
+
+        <form action="/teams/{{addMember.id}}/add-member" method="post">
+            <label for="first">Member First Name</label>
+            <input id="first" name="first" type="text">
+            <label for="last">Member Last Name</label>
+            <input id="last" name="last" type="text">
+            <button type="submit" class="btn btn-default">Add Member</button>
+        </form>
+    {{/if}}
+
+
+{{/partial}}
+
+{{> layout.hbs}}
