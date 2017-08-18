@@ -32,4 +32,24 @@ public class Team {
     public void setId(Integer id){
         this.id = id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Team team = (Team) o;
+
+        if (!name.equals(team.name)) return false;
+        if (!description.equals(team.description)) return false;
+        return id != null ? id.equals(team.id) : team.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        return result;
+    }
 }
