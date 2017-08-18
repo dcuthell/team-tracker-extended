@@ -1,11 +1,13 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Team {
     private String name;
     private String description;
     private Integer id;
+    private List<Member> members;
 
     public Team(String name, String description){
         this.name = name;
@@ -31,6 +33,14 @@ public class Team {
     }
     public void setId(Integer id){
         this.id = id;
+    }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
     }
 
     @Override
